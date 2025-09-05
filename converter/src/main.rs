@@ -16,11 +16,8 @@ fn main() {
     io::stdin()
         .read_line(&mut input_string)
         .expect("Failed to read line");
-    let unit_selection: f64 = match input_string.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0.0,
-    };
-    println!("");
+    let unit_selection: f64 = input_string.trim().parse().unwrap_or(0.0);
+    println!();
 
     // Unit Selection Logic
     if unit_selection == 1.0 {
@@ -29,8 +26,7 @@ fn main() {
         temperature_conversion()
     } else {
         println!("Invalid option. Please enter either 1 or 2.");
-        println!("");
-        main();
+        println!();
     }
 }
 
@@ -44,10 +40,7 @@ fn length_conversion() {
     io::stdin()
         .read_line(&mut input_string)
         .expect("Failed to read line");
-    let unit_amount: f64 = match input_string.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0.0,
-    };
+    let unit_amount: f64 = input_string.trim().parse().unwrap_or(0.0);
 
     // Conversion Logic
     println!(
@@ -55,7 +48,6 @@ fn length_conversion() {
         unit_amount,
         unit_amount * 3.281
     );
-    return;
 }
 
 fn temperature_conversion() {
@@ -68,10 +60,7 @@ fn temperature_conversion() {
     io::stdin()
         .read_line(&mut input_string)
         .expect("Failed to read line");
-    let unit_amount: f64 = match input_string.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0.0,
-    };
+    let unit_amount: f64 = input_string.trim().parse().unwrap_or(0.0);
 
     // Conversion Logic
     println!(
@@ -79,5 +68,4 @@ fn temperature_conversion() {
         unit_amount,
         (unit_amount * 1.8) + 32.0
     );
-    return;
 }
